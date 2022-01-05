@@ -6,6 +6,14 @@ namespace AdoConsole
 {
     class Program
     {
+        public interface IProductDal
+        {
+            List<Product> GetAllProducts();
+            Product GetProductById(int id);
+            void Create(Product product);
+            void Update(Product product);
+            void Delete(int productId);
+        }
         static void Main(string[] args)
         {
             var products = GetAllProducts();
