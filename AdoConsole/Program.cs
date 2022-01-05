@@ -15,6 +15,40 @@ namespace AdoConsole
             void Delete(int productId);
         }
 
+        public class ProductManager : IProductDal
+        {
+            private IProductDal _productDal;
+
+            public ProductManager(IProductDal productDal)
+            {
+                _productDal = productDal;
+            } 
+            public void Create(Product product)
+            {
+                throw new NotImplementedException();
+            }
+
+            public void Delete(int productId)
+            {
+                throw new NotImplementedException();
+            }
+
+            public List<Product> GetAllProducts()
+            {
+                return _productDal.GetAllProducts();
+            }
+
+            public Product GetProductById(int id)
+            {
+                throw new NotImplementedException();
+            }
+
+            public void Update(Product product)
+            {
+                throw new NotImplementedException();
+            }
+        }
+
         public class MSSQLProductDal : IProductDal
         {
 
@@ -89,7 +123,7 @@ namespace AdoConsole
         }
         static void Main(string[] args)
         {
-           var productDal = new MSSQLProductDal();
+           var productDal = new ProductManager(new MSSQLProductDal());
            var products = productDal.GetAllProducts();
 
             foreach (var item in products)
